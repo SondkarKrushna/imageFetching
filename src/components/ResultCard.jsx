@@ -9,7 +9,7 @@ const ResultCard = ({ item }) => {
     const addToCollection = (item) => {
         dispatch(addCollection(item))
         dispatch(addedToast())
-        
+
     }
 
     return (
