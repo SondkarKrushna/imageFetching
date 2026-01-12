@@ -17,19 +17,19 @@ const ResultGrid = () => {
                 dispatch(setLoading())
                 let data = []
                 if (activeTab == 'photos') {
-                    let response = await fetchPhotos(query)                    
+                    let response = await fetchPhotos(query)
                     data = response.results.map((item) => ({
                         id: item.id,
                         type: 'photo',
                         title: item.alt_description,
                         thumbnail: item.urls.small,
                         src: item.urls.full,
-                        url:item.links.html
+                        url: item.links.html
                     }))
                 }
                 if (activeTab == 'videos') {
                     let response = await fetchVideos(query)
-                    
+
 
                     data = response.videos.map((item) => ({
                         id: item.id,
@@ -37,7 +37,7 @@ const ResultGrid = () => {
                         title: item.user.name || 'video',
                         thumbnail: item.image,
                         src: item.video_files[0].link,
-                        url:item.url
+                        url: item.url
                     }))
                 }
                 if (activeTab == 'gif') {
@@ -49,7 +49,7 @@ const ResultGrid = () => {
                         type: 'gif',
                         thumbnail: item.media_formats.tinygif.url,
                         src: item.media_formats.gif.url,
-                        url:item.url
+                        url: item.url
                     }))
 
                 }
@@ -60,7 +60,7 @@ const ResultGrid = () => {
             }
         }
         getData()
-    }, [query, activeTab,dispatch])
+    }, [query, activeTab, dispatch])
 
     if (error) return <h1>Error</h1>
     if (loading) return <h1>Loading...</h1>
